@@ -1,4 +1,5 @@
 export const Card = (props) => {
+    console.log(props.ownerPicture);
     return (
         <>
             {props.isOwner ?
@@ -7,11 +8,11 @@ export const Card = (props) => {
                         <div className="card-body" >
                             <div className='row'>
                                 <div className='col-10 mt-2 text-end'>
-                                    <h5>RadinTiholov</h5>
-                                    <p>Lololoolo</p>
+                                    <h5>{props.ownerName}</h5>
+                                    <p>{props.text}</p>
                                 </div>
                                 <div className='col'>
-                                    <img src="https://avatars.githubusercontent.com/u/74610360?v=4" className="img-fluid rounded-circle" alt="Cinque Terre" style={{ width: '3rem' }} />
+                                    <img src={props.ownerPicture} referrerPolicy="no-referrer" className="img-fluid rounded-circle" alt="profile pic" style={{ width: '3rem' ,height: '3rem'}} />
                                 </div>
                             </div>
                         </div>
@@ -22,11 +23,11 @@ export const Card = (props) => {
                         <div className="card-body" >
                             <div className='row'>
                                 <div className='col-2'>
-                                    <img src="https://avatars.githubusercontent.com/u/74610360?v=4" className="img-fluid rounded-circle" alt="Cinque Terre" style={{ width: '3rem' }} />
+                                    <img src={props.ownerPicture} className="img-fluid rounded-circle" alt="Cinque Terre" style={{ width: '3rem', height: '3rem'}} />
                                 </div>
                                 <div className='col mt-2'>
-                                    <h5>RadinTiholov</h5>
-                                    <p>Hello!! I'am here</p>
+                                    <h5>{props.ownerName}</h5>
+                                    <p>{props.text}</p>
                                 </div>
                             </div>
                         </div>
