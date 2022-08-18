@@ -3,7 +3,7 @@ export const Card = (props) => {
         <>
             {props.isOwner ?
                 <div className='row' style={{ marginLeft: 100 }}>
-                    <div className="card" style={{ backgroundColor: 'red' }}>
+                    <div className="card" style={{ backgroundColor: 'lightgreen' }}>
                         <div className="card-body" >
                             <div className='row'>
                                 <div className='col-10 mt-2 text-end'>
