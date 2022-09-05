@@ -1,5 +1,9 @@
 export const Card = (props) => {
-    console.log(props);
+    const toDateTime = (secs) => {
+        var t = new Date(1970, 0, 1); // Epoch
+        t.setSeconds(secs);
+        return t;
+    }
     return (
         <>
             {props.isOwner ?
@@ -13,6 +17,7 @@ export const Card = (props) => {
                                 </div>
                                 <div className='col'>
                                     <img src={props.ownerPicture} referrerPolicy="no-referrer" className="img-fluid rounded-circle" alt="profile pic" style={{ width: '3rem' ,height: '3rem'}} />
+                                    <p className="mx-1">{toDateTime(props.createdAt.seconds).getUTCDate() + "-" + toDateTime(props.createdAt.seconds).getUTCMonth() + '-' + toDateTime(props.createdAt.seconds).getFullYear()}</p>
                                 </div>
                             </div>
                         </div>
@@ -24,6 +29,7 @@ export const Card = (props) => {
                             <div className='row'>
                                 <div className='col-4'>
                                     <img src={props.ownerPicture} className="img-fluid rounded-circle" alt="Cinque Terre" style={{ width: '3rem', height: '3rem'}} />
+                                    <p className="mx-1">{toDateTime(props.createdAt.seconds).getUTCDate() + "-" + toDateTime(props.createdAt.seconds).getUTCMonth() + '-' + toDateTime(props.createdAt.seconds).getFullYear()}</p>
                                 </div>
                                 <div className='col mt-2'>
                                     <h5>{props.ownerName}</h5>
