@@ -1,6 +1,6 @@
 import { Card } from "../Card/Card"
 import { useCollectionData, useCollection } from 'react-firebase-hooks/firestore'
-import {useState} from 'react'
+import {useEffect, useRef, useState} from 'react'
 import { v4 as uuidv4 } from 'uuid';
 
 export const Container = (props) => {
@@ -9,6 +9,12 @@ export const Container = (props) => {
 
     const [messages] = useCollectionData(query);
     const [text, setText] = useState('');
+    
+    const dummy = useRef();
+    useEffect(() => {
+        dummy.current.scrollIntoView({behavior: 'smooth'})
+    },[messages])
+
     const onSubmit = async (e) => {
         e.preventDefault();
         const {uid, photoURL, displayName} = props.user;
@@ -23,6 +29,7 @@ export const Container = (props) => {
         })
 
         setText('');
+        dummy.current.scrollIntoView({behavior: 'smooth'})
     }
     return (
         <>
@@ -34,6 +41,7 @@ export const Container = (props) => {
                     <div className="card" style={{ width: "40rem" }}>
                         <div className="card-body">
                             {messages?.map(x => <Card key = {x.id} {...x} isOwner = {x.uid === props.user.uid}/>)}
+                            <div ref = {dummy}></div>
                             <form onSubmit={onSubmit}>
                                 <div className='row'>
                                     <div className='col-8'>
